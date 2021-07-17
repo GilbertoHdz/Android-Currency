@@ -22,6 +22,8 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+        }
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -44,7 +46,9 @@ dependencies {
     implementation(project(":libraries:component"))
     implementation(project(":libraries:models"))
     implementation(project(":libraries:utils"))
-
+    
+    implementation(project(":feature:symbols"))
+    
     addCoreLibraryModuleDependencies()
 
     // Gson

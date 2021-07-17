@@ -28,7 +28,7 @@ class GetSymbolsInteractor @Inject constructor(
     }
     
     private fun getSymbols(): Single<SymbolResponse> {
-        return currencyService.getSymbols("KEY_ACCESS")
+        return currencyService.getSymbols("340452cc11802fff3b60a2f72c23ba55")
     }
 
     object Params

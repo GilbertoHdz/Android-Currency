@@ -1,3 +1,4 @@
+include ':feature:symbols'
 include ':libraries:utils'
 include ':libraries:models'
 include ':libraries:interactors'
