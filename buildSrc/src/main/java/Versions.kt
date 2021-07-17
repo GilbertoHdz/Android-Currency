@@ -22,12 +22,21 @@ object Version {
     // Core KTX
     const val CORE_KTX_VERSION = "1.5.0"
 
+    // Kotlin Coroutines
+    const val KOTLINX_COROUTINES_VERSION = "1.4.3"
+
     // ConstraintLayout
     const val CONSTRAINT_LAYOUT_VERSION = "2.0.4"
 
     // Material
     const val MATERIAL_VERSION = "1.3.0"
 
+    // FragmentKtx
+    const val FRAGMENT_KTX_VERSION = "1.3.4"
+
     // Lifecycle
     const val LIFECYCLE_VERSION = "2.3.1"
+
+    // Dagger
+    const val DAGGER_HILT_VERSION = "2.37"
 }

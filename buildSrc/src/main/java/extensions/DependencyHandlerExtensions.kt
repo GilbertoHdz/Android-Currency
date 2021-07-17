@@ -15,10 +15,15 @@ fun DependencyHandler.addCoreLibraryModuleDependencies() {
     implementation(Deps.APPCOMPAT)
     implementation(Deps.MATERIAL)
     implementation(Deps.CONSTRAINT_LAYOUT)
+    implementation(Deps.FRAGMENT_KTX)
 
     // Lifecycle, LiveData, ViewModel
     implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
     implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
+
+    // Dagger Hilt
+    implementation(Deps.DAGGER_HILT_ANDROID)
+    kapt(Deps.DAGGER_HILT_COMPILER)
 }
 
 /*

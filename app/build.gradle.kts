@@ -1,7 +1,11 @@
+import extensions.addCoreLibraryModuleDependencies
+
 plugins {
     id(Plugins.ANDROID_APPLICATION_PLUGIN)
     id(Plugins.KOTLIN_ANDROID_PLUGIN)
+    id(Plugins.KOTLIN_ANDROID_EXTENSIONS_PLUGIN)
     id(Plugins.KOTLIN_KAPT_PLUGIN)
+    id(Plugins.DAGGER_HILT_PLUGIN)
 }
 
 android {
@@ -37,16 +41,7 @@ dependencies {
     // Libraries
     implementation(project(":libraries:component"))
 
-    // Kotlin
-    implementation(Deps.KOTLIN)
-    implementation(Deps.ANDROIDX_CORE_KTX)
-
-    implementation(Deps.APPCOMPAT)
-    implementation(Deps.MATERIAL)
-    implementation(Deps.CONSTRAINT_LAYOUT)
-
-    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
-    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
+    addCoreLibraryModuleDependencies()
 
     // TODO(TEST)
     testImplementation("junit:junit:4.+")

@@ -8,8 +8,12 @@ object Deps {
     // Support Libraries and material
     // AppCompat
     const val APPCOMPAT = "androidx.appcompat:appcompat:${Version.APPCOMPAT_VERSION}"
+
     // Material
     const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL_VERSION}"
+
+    // Fragment Ktx
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Version.FRAGMENT_KTX_VERSION}"
 
     // ConstraintLayout
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Version.CONSTRAINT_LAYOUT_VERSION}"
@@ -19,4 +23,8 @@ object Deps {
 
     // LiveData
     const val LIFECYCLE_LIVEDATA_KTX = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.LIFECYCLE_VERSION}"
+
+    // Dagger Hilt
+    const val DAGGER_HILT_ANDROID = "com.google.dagger:hilt-android:${Version.DAGGER_HILT_VERSION}"
+    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
 }

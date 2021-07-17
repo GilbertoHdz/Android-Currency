@@ -3,7 +3,9 @@ import extensions.addCoreLibraryModuleDependencies
 plugins {
     id(Plugins.ANDROID_LIBRARY_PLUGIN)
     id(Plugins.KOTLIN_ANDROID_PLUGIN)
+    id(Plugins.KOTLIN_ANDROID_EXTENSIONS_PLUGIN)
     id(Plugins.KOTLIN_KAPT_PLUGIN)
+    id(Plugins.DAGGER_HILT_PLUGIN)
 }
 
 android {
