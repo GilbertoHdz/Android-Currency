@@ -1,3 +1,4 @@
+include ':libraries:interactors'
 include ':libraries:api'
 include ':libraries:component'
 include ':app'

@@ -40,6 +40,7 @@ dependencies {
 
     // Libraries
     implementation(project(":libraries:api"))
+    implementation(project(":libraries:interactors"))
     implementation(project(":libraries:component"))
 
     addCoreLibraryModuleDependencies()
