@@ -1,2 +1,3 @@
+include ':libraries:component'
 include ':app'
 rootProject.name = "Currency"
