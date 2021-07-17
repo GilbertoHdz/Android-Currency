@@ -52,3 +52,17 @@ object Version {
     // RxKotlin
     const val RX_KOTLIN_VERSION = "2.4.0"
 }
+
+object TestVersion {
+    // JUnit
+    const val JUNIT_VERSION = "4.13.2"
+    
+    // Mockito
+    const val MOCKITO_VERSION = "3.11.0"
+    
+    // Mockk
+    const val MOCKK_VERSION = "1.11.0"
+    
+    // Hamcrest
+    const val HAMCREST_VERSION = "2.2"
+}

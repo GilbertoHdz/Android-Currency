@@ -39,4 +39,10 @@ dependencies {
     // Dagger Hilt
     implementation(Deps.DAGGER_HILT_ANDROID)
     kapt(Deps.DAGGER_HILT_COMPILER)
+    
+    testImplementation(TestDep.JUNIT)
+    testImplementation(TestDep.MOCKITO)
+    testImplementation(TestDep.MOCKK)
+    testImplementation(TestDep.HAMCREST)
+    testImplementation(TestDep.HAMCREST_LIBRARY)
 }

@@ -43,3 +43,11 @@ object Deps {
     // Rx
     const val RX_KOTLIN = "io.reactivex.rxjava2:rxkotlin:${Version.RX_KOTLIN_VERSION}"
 }
+
+object TestDep {
+    const val JUNIT = "junit:junit:${TestVersion.JUNIT_VERSION}"
+    const val MOCKITO = "org.mockito:mockito-core:${TestVersion.MOCKITO_VERSION}"
+    const val MOCKK = "io.mockk:mockk:${TestVersion.MOCKK_VERSION}"
+    const val HAMCREST = "org.hamcrest:hamcrest:${TestVersion.HAMCREST_VERSION}"
+    const val HAMCREST_LIBRARY = "org.hamcrest:hamcrest-library:${TestVersion.HAMCREST_VERSION}"
+}
