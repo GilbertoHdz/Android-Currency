@@ -1,9 +1,9 @@
-package com.gilbertohdz.currency
+package com.gilbertohdz.currency.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.gilbertohdz.currency.ui.main.MainViewModel
+import com.gilbertohdz.currency.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

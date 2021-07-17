@@ -1,3 +1,4 @@
+include ':feature:rates'
 include ':feature:symbols'
 include ':libraries:utils'
 include ':libraries:models'

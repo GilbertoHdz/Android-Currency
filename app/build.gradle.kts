@@ -48,6 +48,7 @@ dependencies {
     implementation(project(":libraries:utils"))
     
     implementation(project(":feature:symbols"))
+    implementation(project(":feature:rates"))
     
     addCoreLibraryModuleDependencies()
 
