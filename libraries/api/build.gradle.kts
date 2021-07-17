@@ -1,4 +1,3 @@
-import extensions.addCoreLibraryModuleDependencies
 
 plugins {
     id(Plugins.ANDROID_LIBRARY_PLUGIN)
@@ -29,5 +28,12 @@ android {
 }
 
 dependencies {
-    addCoreLibraryModuleDependencies()
+
+    implementation(Deps.KOTLIN)
+    implementation(Deps.RETROFIT)
+    implementation(Deps.RX_KOTLIN)
+
+    // Dagger Hilt
+    implementation(Deps.DAGGER_HILT_ANDROID)
+    kapt(Deps.DAGGER_HILT_COMPILER)
 }

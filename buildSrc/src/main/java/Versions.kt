@@ -48,4 +48,7 @@ object Version {
 
     // OKHttp
     const val OKHTTP_VERSION = "4.9.1"
+
+    // RxKotlin
+    const val RX_KOTLIN_VERSION = "2.4.0"
 }
