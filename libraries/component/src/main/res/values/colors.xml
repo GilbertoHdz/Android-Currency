@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">@color/dark_blue</color>
+    <color name="colorOnPrimary">@color/white</color>
+    <color name="colorSecondary">@color/white</color>
+    <color name="colorOnSecondary">@color/gray</color>
+    <color name="textColorPrimary">@color/black</color>
+    <color name="textColorSecondary">@color/gray</color>
+    <color name="textColorTertiary">@color/light_gray</color>
+
+    <color name="dark_blue">#283f59</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#212121</color>
+    <color name="gray">#888B90</color>
+    <color name="light_gray">#DCDCDF</color>
+
+    <color name="black_800">#37474F</color> <!--Color surface (dark)-->
+    <!--Color on secondary (light), color on background (light),-->
+    <!--color on surface (light)-->
+    <color name="black_900">#212121</color>
+
+    <color name="red_200">#cf6679</color> <!--Color error (dark)-->
+    <color name="red_600">#b00020</color> <!--Color error (light)-->
 </resources>

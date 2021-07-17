@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Button -->
+    <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textColor">@color/colorSecondary</item>
+    </style>
+
+    <!--Material Card-->
+    <style name="Widget.MyTheme.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MyTheme.App.Card</item>
+    </style>
+
+    <style name="ThemeOverlay.MyTheme.App.Card" parent="">
+        <item name="colorOnSurface">@color/colorPrimary</item>
+    </style>
+</resources>
