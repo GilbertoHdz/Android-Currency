@@ -3,6 +3,7 @@ object Plugins {
     const val CLASSPATH_GRADLE = "com.android.tools.build:gradle:${PluginVersion.GRADLE_VERSION}"
     const val CLASSPATH_KOTLIN_GRADLE = "org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginVersion.KOTLIN_VERSION}"
     const val CLASSPATH_DAGGER_HILT = "com.google.dagger:hilt-android-gradle-plugin:${Version.DAGGER_HILT_VERSION}"
+    const val CLASSPATH_NAVIGATION_SAFEARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${PluginVersion.NAVIGATION_VERSION}"
 
     // Module Level
     const val ANDROID_APPLICATION_PLUGIN = "com.android.application"
@@ -13,4 +14,5 @@ object Plugins {
     const val KOTLIN_PLUGIN = "kotlin"
     const val KOTLIN_ANDROID_EXTENSIONS_PLUGIN = "kotlin-android-extensions"
     const val DAGGER_HILT_PLUGIN = "dagger.hilt.android.plugin"
+    const val NAV_SAFEARGS_PLUGIN = "androidx.navigation.safeargs.kotlin"
 }

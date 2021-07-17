@@ -1,6 +1,7 @@
 object PluginVersion {
     const val KOTLIN_VERSION = "1.4.10"
     const val GRADLE_VERSION = "4.1.0"
+    const val NAVIGATION_VERSION = "2.3.5"
 }
 
 object AndroidVersion {
@@ -36,6 +37,9 @@ object Version {
 
     // Lifecycle
     const val LIFECYCLE_VERSION = "2.3.1"
+    
+    // Navigation Components
+    const val NAVIGATION_VERSION = "2.3.5"
 
     // Dagger
     const val DAGGER_HILT_VERSION = "2.37"

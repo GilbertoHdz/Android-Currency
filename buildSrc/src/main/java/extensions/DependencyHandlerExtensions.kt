@@ -22,7 +22,11 @@ fun DependencyHandler.addCoreLibraryModuleDependencies() {
     // Lifecycle, LiveData, ViewModel
     implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
     implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
-
+    
+    // Navigation Components
+    implementation(Deps.NAVIGATION_FRAGMENT)
+    implementation(Deps.NAVIGATION_UI)
+    
     // Dagger Hilt
     implementation(Deps.DAGGER_HILT_ANDROID)
     kapt(Deps.DAGGER_HILT_COMPILER)
