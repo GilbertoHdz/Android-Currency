@@ -39,4 +39,13 @@ object Version {
 
     // Dagger
     const val DAGGER_HILT_VERSION = "2.37"
+
+    // Gson
+    const val GSON_VERSION = "2.8.6"
+
+    // Retrofit 2
+    const val RETROFIT_VERSION = "2.9.0"
+
+    // OKHttp
+    const val OKHTTP_VERSION = "4.9.1"
 }

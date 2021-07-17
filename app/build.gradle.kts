@@ -39,10 +39,21 @@ android {
 dependencies {
 
     // Libraries
-    implementation(project(":libraries:api"))
     implementation(project(":libraries:component"))
 
     addCoreLibraryModuleDependencies()
+
+    // Gson
+    implementation(Deps.GSON)
+
+    // Retrofit
+    implementation(Deps.RETROFIT)
+    implementation(Deps.RETROFIT_GSON_CONVERTER)
+    implementation(Deps.RETROFIT_RX_ADAPTER)
+
+    // OkHttp
+    implementation(Deps.OKHTTP)
+    implementation(Deps.OKHTTP_LOGGING_INTERCEPTOR)
 
     // TODO(TEST)
     testImplementation("junit:junit:4.+")

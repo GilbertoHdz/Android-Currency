@@ -27,4 +27,16 @@ object Deps {
     // Dagger Hilt
     const val DAGGER_HILT_ANDROID = "com.google.dagger:hilt-android:${Version.DAGGER_HILT_VERSION}"
     const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.DAGGER_HILT_VERSION}"
+
+    // Gson
+    const val GSON = "com.google.code.gson:gson:${Version.GSON_VERSION}"
+
+    // Retrofit
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_VERSION}"
+    const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
+    const val RETROFIT_RX_ADAPTER = "com.squareup.retrofit2:adapter-rxjava:${Version.RETROFIT_VERSION}"
+
+    // OkHttp
+    const val OKHTTP = "com.squareup.okhttp3:okhttp:${Version.OKHTTP_VERSION}"
+    const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Version.OKHTTP_VERSION}"
 }
