@@ -28,7 +28,9 @@ android {
 }
 
 dependencies {
-
+    
+    implementation(project(":libraries:models"))
+    
     implementation(Deps.KOTLIN)
     implementation(Deps.RETROFIT)
     implementation(Deps.RX_KOTLIN)
