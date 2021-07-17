@@ -39,6 +39,7 @@ android {
 dependencies {
 
     // Libraries
+    implementation(project(":libraries:api"))
     implementation(project(":libraries:component"))
 
     addCoreLibraryModuleDependencies()
