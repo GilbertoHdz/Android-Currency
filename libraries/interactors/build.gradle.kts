@@ -29,6 +29,8 @@ android {
 
 dependencies {
 
+    implementation(project(":libraries:api"))
+
     implementation(Deps.KOTLIN)
     implementation(Deps.RETROFIT)
     implementation(Deps.RX_KOTLIN)
