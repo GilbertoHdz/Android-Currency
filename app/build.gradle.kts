@@ -34,6 +34,9 @@ android {
 
 dependencies {
 
+    // Libraries
+    implementation(project(":libraries:component"))
+
     // Kotlin
     implementation(Deps.KOTLIN)
     implementation(Deps.ANDROIDX_CORE_KTX)
