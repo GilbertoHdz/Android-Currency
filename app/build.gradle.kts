@@ -1,19 +1,19 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    id(Plugins.ANDROID_APPLICATION_PLUGIN)
+    id(Plugins.KOTLIN_ANDROID_PLUGIN)
+    id(Plugins.KOTLIN_KAPT_PLUGIN)
 }
 
 android {
-    compileSdkVersion(30)
-    buildToolsVersion("30.0.3")
+    compileSdkVersion(AndroidVersion.COMPILE_SDK_VERSION)
+    buildToolsVersion(AndroidVersion.BUILD_TOOLS_VERSION)
 
     defaultConfig {
-        applicationId("com.gilbertohdz.currency")
-        minSdkVersion(21)
-        targetSdkVersion(30)
-        versionCode(1)
-        versionName("1.0")
-
+        applicationId = AndroidVersion.APPLICATION_ID
+        minSdkVersion(AndroidVersion.MIN_SDK_VERSION)
+        targetSdkVersion(AndroidVersion.TARGET_SDK_VERSION)
+        versionCode = AndroidVersion.VERSION_CODE
+        versionName = AndroidVersion.VERSION_NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,13 +34,18 @@ android {
 
 dependencies {
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    // Kotlin
+    implementation(Deps.KOTLIN)
+    implementation(Deps.ANDROIDX_CORE_KTX)
+
+    implementation(Deps.APPCOMPAT)
+    implementation(Deps.MATERIAL)
+    implementation(Deps.CONSTRAINT_LAYOUT)
+
+    implementation(Deps.LIFECYCLE_LIVEDATA_KTX)
+    implementation(Deps.LIFECYCLE_VIEWMODEL_KTX)
+
+    // TODO(TEST)
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
