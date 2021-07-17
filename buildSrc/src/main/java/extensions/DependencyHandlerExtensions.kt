@@ -10,7 +10,9 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 fun DependencyHandler.addCoreLibraryModuleDependencies() {
     implementation(Deps.KOTLIN)
     implementation(Deps.ANDROIDX_CORE_KTX)
-
+    implementation(Deps.RX_KOTLIN)
+    implementation(Deps.RX_ANDROID)
+    
     // Support and Widgets
     implementation(Deps.APPCOMPAT)
     implementation(Deps.MATERIAL)

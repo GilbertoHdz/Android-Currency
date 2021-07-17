@@ -34,14 +34,17 @@ object Deps {
     // Retrofit
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_VERSION}"
     const val RETROFIT_GSON_CONVERTER = "com.squareup.retrofit2:converter-gson:${Version.RETROFIT_VERSION}"
-    const val RETROFIT_RX_ADAPTER = "com.squareup.retrofit2:adapter-rxjava:${Version.RETROFIT_VERSION}"
+    const val RETROFIT_RX_ADAPTER = "com.squareup.retrofit2:adapter-rxjava2:${Version.RETROFIT_VERSION}"
 
     // OkHttp
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Version.OKHTTP_VERSION}"
     const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Version.OKHTTP_VERSION}"
 
-    // Rx
+    // RxKotlin
     const val RX_KOTLIN = "io.reactivex.rxjava2:rxkotlin:${Version.RX_KOTLIN_VERSION}"
+    
+    // RxAndroid
+    const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Version.RX_ANDROID_VERSION}"
 }
 
 object TestDep {

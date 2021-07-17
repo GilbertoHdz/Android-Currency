@@ -51,6 +51,9 @@ object Version {
 
     // RxKotlin
     const val RX_KOTLIN_VERSION = "2.4.0"
+    
+    // RxAndroid
+    const val RX_ANDROID_VERSION = "2.1.1"
 }
 
 object TestVersion {
