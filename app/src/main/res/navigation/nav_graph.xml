@@ -5,4 +5,5 @@
     app:startDestination="@id/nav_symbols">
 
     <include app:graph="@navigation/nav_symbols" />
+    <include app:graph="@navigation/nav_rates" />
 </navigation>

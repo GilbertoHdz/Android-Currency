@@ -1,5 +1,6 @@
 package com.gilbertohdz.currency.feat.symbols
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -7,9 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.view.ActionMode
+import androidx.core.net.toUri
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.Navigator
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.symbols_component_search_toolbar.*
@@ -43,6 +49,10 @@ class SymbolsFragment : Fragment() {
     setupActionBar()
   }
   
+  override fun onDestroyView() {
+    super.onDestroyView()
+  }
+  
   private fun bindView() {
     symbolsRecyclerview.apply {
       layoutManager = LinearLayoutManager(
@@ -51,6 +61,13 @@ class SymbolsFragment : Fragment() {
         false
       )
       adapter = symbolsAdapter
+    }
+    symbolsAdapter.onSymbolsClickListener {
+      val uriToRates = "currency-app://com.gilbertohdz.currency/rates/rate-view/$it".toUri()
+      val deepLinkRequest: NavDeepLinkRequest = NavDeepLinkRequest.Builder
+        .fromUri(uriToRates)
+        .build()
+      findNavController().navigate(deepLinkRequest)
     }
   }
   

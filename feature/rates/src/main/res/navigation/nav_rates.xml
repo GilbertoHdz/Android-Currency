@@ -9,5 +9,12 @@
         android:id="@+id/ratesFragment"
         android:name="com.gilbertohdz.currency.feat.rates.RatesFragment"
         android:label="rates_fragment"
-        tools:layout="@layout/rates_fragment" />
+        tools:layout="@layout/rates_fragment">
+        <argument
+            android:name="symbol"
+            app:argType="string"/>
+        <deepLink
+            android:id="@+id/ratesFragmentDeepLink"
+            app:uri="currency-app://com.gilbertohdz.currency/rates/rate-view/{symbol}" />
+    </fragment>
 </navigation>
