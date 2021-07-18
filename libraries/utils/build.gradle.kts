@@ -11,4 +11,5 @@ java {
 dependencies {
     implementation(Deps.KOTLIN)
     implementation(Deps.RX_KOTLIN)
+    implementation(Deps.RETROFIT)
 }

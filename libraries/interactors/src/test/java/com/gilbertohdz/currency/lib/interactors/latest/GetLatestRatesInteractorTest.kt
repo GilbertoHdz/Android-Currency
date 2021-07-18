@@ -1,7 +1,9 @@
-package com.gilbertohdz.currency.lib.interactors.symbol
+package com.gilbertohdz.currency.lib.interactors.latest
 
 import com.gilbertohdz.currency.lib.api.CurrencyService
+import com.gilbertohdz.currency.lib.interactors.symbol.GetSymbolsInteractorTest
 import com.gilbertohdz.currency.lib.models.ErrorData
+import com.gilbertohdz.currency.lib.models.rates.RateResponse
 import com.gilbertohdz.currency.lib.models.symbol.SymbolResponse
 import com.gilbertohdz.currency.lib.utils.common.ErrorTypeCommon
 import com.gilbertohdz.currency.lib.utils.prefs.ICurrencyPrefs
@@ -17,14 +19,14 @@ import retrofit2.HttpException
 import retrofit2.Response
 
 /**
- * Test for [GetSymbolsInteractor]
+ * Test for [GetLatestRatesInteractor]
  */
-internal class GetSymbolsInteractorTest {
+internal class GetLatestRatesInteractorTest {
   
   private val mockCurrencyService: CurrencyService = mockk()
   private val mockPrefs: ICurrencyPrefs = mockk()
   
-  private val interactor = GetSymbolsInteractor(mockCurrencyService, mockPrefs)
+  private val interactor = GetLatestRatesInteractor(mockCurrencyService, mockPrefs)
   
   @Before
   fun setUp() {
@@ -33,37 +35,37 @@ internal class GetSymbolsInteractorTest {
   
   @Test
   fun `success in API response return InProgress then Success`() {
-    val response = mockSymbolSuccessResponse()
+    val response = mockRatesSuccessResponse()
     
     every {
-      mockCurrencyService.getSymbols(KEY_ACCESS)
+      mockCurrencyService.getLatestByBase(KEY_ACCESS, KEY_BASE)
     } returns Single.just(response)
     
-    val result = Observable.just(GetSymbolsInteractor.Params)
+    val result = Observable.just(GetLatestRatesInteractor.Params(KEY_BASE))
       .compose(interactor.getTransformer())
       .test()
     
     result.assertValueSequence(listOf(
-      GetSymbolsInteractor.Result.InProgress,
-      GetSymbolsInteractor.Result.Success(response.symbols)
+      GetLatestRatesInteractor.Result.InProgress,
+      GetLatestRatesInteractor.Result.Success(response.rates)
     ))
   }
   
   @Test
   fun `error in API response return InProgress then Error`() {
-    val response = mockSymbolErrorResponse()
-    
+    val response = mockRatesErrorResponse()
+  
     every {
-      mockCurrencyService.getSymbols(KEY_ACCESS)
+      mockCurrencyService.getLatestByBase(KEY_ACCESS, KEY_BASE)
     } returns Single.just(response)
-    
-    val result = Observable.just(GetSymbolsInteractor.Params)
+  
+    val result = Observable.just(GetLatestRatesInteractor.Params(KEY_BASE))
       .compose(interactor.getTransformer())
       .test()
-    
+  
     result.assertValueSequence(listOf(
-      GetSymbolsInteractor.Result.InProgress,
-      GetSymbolsInteractor.Result.Error(response.error!!.code, response.error!!.info)
+      GetLatestRatesInteractor.Result.InProgress,
+      GetLatestRatesInteractor.Result.Error(response.error!!.code, response.error!!.info)
     ))
   }
   
@@ -72,21 +74,22 @@ internal class GetSymbolsInteractorTest {
     val mockErrorResponse = createHttpException(404)
   
     every {
-      mockCurrencyService.getSymbols(KEY_ACCESS)
+      mockCurrencyService.getLatestByBase(KEY_ACCESS, KEY_BASE)
     } returns Single.error(mockErrorResponse)
   
-    val result = Observable.just(GetSymbolsInteractor.Params)
+    val result = Observable.just(GetLatestRatesInteractor.Params(KEY_BASE))
       .compose(interactor.getTransformer())
       .test()
   
     result.assertValueSequence(listOf(
-      GetSymbolsInteractor.Result.InProgress,
-      GetSymbolsInteractor.Result.Failed(mockErrorResponse, ErrorTypeCommon.NETWORK)
+      GetLatestRatesInteractor.Result.InProgress,
+      GetLatestRatesInteractor.Result.Failed(mockErrorResponse, ErrorTypeCommon.NETWORK)
     ))
   }
   
   companion object {
     private const val KEY_ACCESS = "KEY_ACCESS"
+    private const val KEY_BASE = "MNX"
     private const val KEY_ERROR_INVALID_ACCESS_KEY = 101
   }
   
@@ -94,18 +97,20 @@ internal class GetSymbolsInteractorTest {
     return HttpException(Response.error<List<SymbolResponse>>(code, ResponseBody.create(MediaType.parse(""), "")))
   }
   
-  private fun mockSymbolSuccessResponse(): SymbolResponse {
-    return SymbolResponse(
+  private fun mockRatesSuccessResponse(): RateResponse {
+    return RateResponse(
       success = true,
-      symbols = mapOf("A" to "Aaa", "B" to "Bbb"),
+      base = KEY_BASE,
+      rates = mapOf("A" to 2.0, "B" to 4.0, "C" to 6.0),
       error = null
     )
   }
   
-  private fun mockSymbolErrorResponse(): SymbolResponse {
-    return SymbolResponse(
+  private fun mockRatesErrorResponse(): RateResponse {
+    return RateResponse(
       success = false,
-      symbols = emptyMap(),
+      base = KEY_BASE,
+      rates = emptyMap(),
       error = ErrorData(
         code = KEY_ERROR_INVALID_ACCESS_KEY,
         info = "invalid_access_key",

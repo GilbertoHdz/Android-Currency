@@ -31,6 +31,7 @@ dependencies {
     
     implementation(project(":libraries:api"))
     implementation(project(":libraries:models"))
+    implementation(project(":libraries:utils"))
 
     implementation(Deps.KOTLIN)
     implementation(Deps.RETROFIT)

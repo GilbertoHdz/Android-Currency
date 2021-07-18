@@ -1,5 +1,6 @@
 package com.gilbertohdz.currency.di
 
+import com.gilbertohdz.currency.lib.utils.prefs.ICurrencyPrefs
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -26,4 +27,8 @@ class CurrencyModule {
     fun providesCompositeDisposable(): CompositeDisposable {
         return CompositeDisposable()
     }
+    
+    @Singleton
+    @Provides
+    fun currencyPrefs(currencyPrefs: CurrencyPrefs): ICurrencyPrefs = currencyPrefs
 }
