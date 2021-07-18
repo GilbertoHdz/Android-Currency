@@ -6,5 +6,5 @@ data class RateResponse(
     val success: Boolean,
     val base: String,
     val rates: Map<String, Double>,
-    val error: ErrorData
+    val error: ErrorData?
 )
