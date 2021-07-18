@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gilbertohdz.currency.lib.component.extension.edittext.afterTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.rates_fragment.*
 
@@ -37,13 +39,12 @@ class RatesFragment : Fragment() {
     (activity as AppCompatActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
     (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
   
-    ratesToolbar.setNavigationOnClickListener {
-      Log.i("GIL", arg.symbol)
-    }
+    ratesToolbar.setNavigationOnClickListener { findNavController().popBackStack() }
   
     viewModel.getRates(arg.symbol)
     viewModel.rates().observe(viewLifecycleOwner, Observer { result -> ratesAdapter.submitList(result) })
     bindView()
+    setupConversion()
   }
   
   private fun bindView() {
@@ -57,5 +58,9 @@ class RatesFragment : Fragment() {
     }
   }
   
-  
+  private fun setupConversion() {
+    ratesValueEditText.afterTextChanged {
+      viewModel.calculateConversions(it)
+    }
+  }
 }

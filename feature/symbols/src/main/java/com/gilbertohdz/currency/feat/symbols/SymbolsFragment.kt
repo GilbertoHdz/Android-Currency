@@ -1,6 +1,5 @@
 package com.gilbertohdz.currency.feat.symbols
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -9,14 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.view.ActionMode
 import androidx.core.net.toUri
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.Navigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gilbertohdz.currency.lib.component.extension.edittext.onQueryTextChange
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.symbols_component_search_toolbar.*
 import kotlinx.android.synthetic.main.symbols_fragment.*
@@ -106,14 +104,10 @@ class SymbolsFragment : Fragment() {
       val searchView: SearchView? = menu?.findItem(R.id.symbolsComponentSearchMenuItem)?.actionView as SearchView?
       searchView?.let { search ->
         search.onActionViewExpanded()
-        search.queryHint = "Search currency" /// requireContext().getString()
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-          override fun onQueryTextSubmit(query: String?): Boolean { return false }
-          override fun onQueryTextChange(newText: String?): Boolean {
-            Log.i("GIL", "searchView: $newText")
-            return true
-          }
-        })
+        search.queryHint = getString(R.string.symbols_search_currency)
+        search.onQueryTextChange {
+          Log.i("GIL", "searchView: $it")
+        }
         search.setOnCloseListener {
           true
         }

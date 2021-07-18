@@ -4,10 +4,10 @@
     android:id="@+id/symbolsComponentSearchToolbarLayout"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="8dp"
+    android:layout_marginStart="@dimen/xlarge_margin"
+    android:layout_marginTop="@dimen/normal_margin"
+    android:layout_marginEnd="@dimen/xlarge_margin"
+    android:layout_marginBottom="@dimen/normal_margin"
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="4dp"
@@ -27,8 +27,8 @@
             android:id="@+id/symbolsComponentSearchToolbarIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:padding="4dp"
+            android:layout_marginStart="@dimen/xlarge_margin"
+            android:padding="@dimen/small_padding"
             app:srcCompat="@drawable/component_ic_search"
             app:tint="@color/textColorSecondary" />
 
@@ -36,7 +36,7 @@
             android:id="@+id/symbolsComponentSearchToolbarLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/normal_margin"
             android:text="Search" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

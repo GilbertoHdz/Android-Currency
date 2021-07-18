@@ -2,7 +2,6 @@ package com.gilbertohdz.currency.feat.rates
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.gilbertohdz.currency.lib.interactors.latest.GetLatestRatesInteractor
 import com.gilbertohdz.currency.lib.interactors.latest.GetLatestRatesInteractor.Result as GetRatesResult
@@ -49,6 +48,12 @@ class RatesViewModel @Inject constructor(
   
       _rates.value = mapRates
     }
+  }
+  
+  fun calculateConversions(newValue: String) {
+    val toNewValue = if (newValue.isEmpty()) DEFAULT_CONVERT_VALUE else newValue.toInt()
+    val temp = _rates.value?.map { it.copy(toConvert = toNewValue) } ?: emptyList()
+    _rates.value = temp
   }
   
   override fun onCleared() {
