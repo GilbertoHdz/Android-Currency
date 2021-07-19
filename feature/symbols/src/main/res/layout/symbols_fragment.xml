@@ -45,7 +45,21 @@
         android:id="@+id/symbolsRecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/symbols_item_view"/>
 
+    <ProgressBar
+        android:id="@+id/symbolsLoader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <com.gilbertohdz.currency.lib.component.views.CoverMessagesView
+        android:id="@+id/symbolsMessageCoverViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_gravity="center" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

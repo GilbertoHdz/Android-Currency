@@ -55,6 +55,7 @@ class RatesFragment : Fragment() {
     result?.let {
       ratesAdapter.submitList(it)
       ratesMainGroup.visibility = View.VISIBLE
+      componentMessageCoverViewContainer.visibility = View.GONE
     }
   }
   

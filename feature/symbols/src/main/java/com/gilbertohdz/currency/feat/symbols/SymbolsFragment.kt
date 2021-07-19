@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.view.ActionMode
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +16,7 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gilbertohdz.currency.lib.component.extension.edittext.onQueryTextChange
+import com.gilbertohdz.currency.lib.utils.common.ErrorTypeCommon
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.symbols_component_search_toolbar.*
 import kotlinx.android.synthetic.main.symbols_fragment.*
@@ -41,10 +43,41 @@ class SymbolsFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     viewModel.getSymbols()
-    viewModel.symbols().observe(viewLifecycleOwner, Observer { result -> symbolsAdapter.submitList(result) })
+    viewModel.symbols().observe(viewLifecycleOwner, Observer { result -> bindSymbols(result) })
+    viewModel.isSymbolsFailure().observe(viewLifecycleOwner, Observer { bindFailureView(it) })
+    viewModel.isSymbolsError().observe(viewLifecycleOwner, Observer { bindErrorView(it) })
+    viewModel.isSymbolsLoading().observe(viewLifecycleOwner, Observer { symbolsLoader.isVisible = it })
     
     bindView()
-    setupActionBar()
+  }
+  
+  private fun bindSymbols(result: List<CurrencySymbolUi>?) {
+    result?.let {
+      symbolsAdapter.submitList(it)
+      symbolsRecyclerview.visibility = View.VISIBLE
+      symbolsMessageCoverViewContainer.visibility = View.GONE
+      setupActionBar()
+    }
+  }
+  
+  private fun bindErrorView(errorUi: SymbolErrorUi?) {
+    errorUi?.let { error ->
+      symbolsMessageCoverViewContainer.title(error.code.toString())
+      symbolsMessageCoverViewContainer.description(error.description)
+      symbolsMessageCoverViewContainer.visibility = View.VISIBLE
+    }
+  }
+  
+  private fun bindFailureView(failureUi: SymbolFailureUi?) {
+    failureUi?.let { failure ->
+      val failTitle = if (failure.typeError == ErrorTypeCommon.NETWORK) R.string.component_error_connection_title else R.string.component_error_generic_title
+      val failDesc = if (failure.typeError == ErrorTypeCommon.NETWORK) R.string.component_error_connection_description else R.string.component_error_generic_description
+      
+      symbolsMessageCoverViewContainer.title(getString(failTitle))
+      symbolsMessageCoverViewContainer.description(getString(failDesc))
+      symbolsMessageCoverViewContainer.retryAction { viewModel.getSymbols() }
+      symbolsMessageCoverViewContainer.visibility = View.VISIBLE
+    }
   }
   
   override fun onDestroyView() {
