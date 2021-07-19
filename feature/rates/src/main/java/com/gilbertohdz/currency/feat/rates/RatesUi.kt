@@ -1,7 +1,8 @@
 package com.gilbertohdz.currency.feat.rates
 
 import com.gilbertohdz.currency.lib.utils.common.ErrorTypeCommon
-import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 data class RatesUi(
   val currency: String,
@@ -9,8 +10,11 @@ data class RatesUi(
   val toConvert: Int
 ) {
   fun convertToValue(): String {
-    val decimalFormat = DecimalFormat("0.00")
-    return decimalFormat.format((this.value * this.toConvert))
+    val format: NumberFormat = NumberFormat.getCurrencyInstance()
+    format.maximumFractionDigits = 2
+    format.currency = Currency.getInstance(currency)
+    format.format((this.value * this.toConvert))
+    return format.format((this.value * this.toConvert))
   }
 }
 

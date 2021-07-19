@@ -7,4 +7,8 @@
     <string name="component_error_connection_description">Please check your internet connection and try again.</string>
     <string name="component_error_generic_title">Something went wrong</string>
     <string name="component_error_generic_description">Oops! Something went wrong, please try again.</string>
+    <string name="component_dialog_restart_session_title">Your session has been expired.</string>
+    <string name="component_dialog_restart_session_desc">Do you want reset again?</string>
+    <string name="component_dialog_restart_session_ok">Accept</string>
+    <string name="component_dialog_restart_session_cancel">Cancel</string>
 </resources>

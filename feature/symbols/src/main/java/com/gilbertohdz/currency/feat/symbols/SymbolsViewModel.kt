@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gilbertohdz.currency.lib.interactors.symbol.GetSymbolsInteractor
+import com.gilbertohdz.currency.lib.utils.event.Event
 import com.gilbertohdz.currency.lib.interactors.symbol.GetSymbolsInteractor.Result as GetSymbolsResult
 import com.gilbertohdz.currency.lib.utils.providers.SchedulerProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,12 +22,12 @@ class SymbolsViewModel @Inject constructor(
   
   private val _symbolsLoading = MutableLiveData<Boolean>()
   private val _symbolsFailure = MutableLiveData<SymbolFailureUi>()
-  private val _symbolsError = MutableLiveData<SymbolErrorUi>()
+  private val _symbolsError = MutableLiveData<Event<SymbolErrorUi>>()
   private val _symbols = MutableLiveData<List<CurrencySymbolUi>>()
   
   fun isSymbolsLoading(): LiveData<Boolean> = _symbolsLoading
   fun isSymbolsFailure(): LiveData<SymbolFailureUi> = _symbolsFailure
-  fun isSymbolsError(): LiveData<SymbolErrorUi> = _symbolsError
+  fun isSymbolsError(): LiveData<Event<SymbolErrorUi>> = _symbolsError
   fun symbols(): LiveData<List<CurrencySymbolUi>> = _symbols
   
   fun getSymbols() {
@@ -47,7 +48,7 @@ class SymbolsViewModel @Inject constructor(
     }
     
     if (result is GetSymbolsResult.Error) {
-      _symbolsError.value = SymbolErrorUi(result.code, result.info)
+      _symbolsError.value = Event(SymbolErrorUi(result.code, result.info))
     }
     
     if (result is GetSymbolsResult.Success) {

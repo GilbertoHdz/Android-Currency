@@ -13,12 +13,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gilbertohdz.currency.lib.component.extension.edittext.afterTextChanged
+import com.gilbertohdz.currency.lib.component.views.showDialogSession
 import com.gilbertohdz.currency.lib.utils.common.ErrorTypeCommon
+import com.gilbertohdz.currency.lib.utils.prefs.ICurrencyPrefs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.rates_fragment.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RatesFragment : Fragment() {
+  
+  @Inject lateinit var prefs: ICurrencyPrefs
   
   private val viewModel by viewModels<RatesViewModel>()
   
@@ -61,6 +66,12 @@ class RatesFragment : Fragment() {
   
   private fun bindErrorView(errorUi: RateErrorUi?) {
     errorUi?.let { error ->
+      if (error.code == 101 && prefs.isSessionExpired()) {
+        requireContext().showDialogSession {
+          prefs.restartSession()
+          viewModel.getRates(arg.symbol)
+        }
+      }
       componentMessageCoverViewContainer.title(error.code.toString())
       componentMessageCoverViewContainer.description(error.description)
       componentMessageCoverViewContainer.visibility = View.VISIBLE

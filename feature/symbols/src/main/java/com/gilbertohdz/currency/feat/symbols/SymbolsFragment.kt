@@ -16,15 +16,21 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gilbertohdz.currency.lib.component.extension.edittext.onQueryTextChange
+import com.gilbertohdz.currency.lib.component.views.showDialogSession
 import com.gilbertohdz.currency.lib.utils.common.ErrorTypeCommon
+import com.gilbertohdz.currency.lib.utils.event.Event
+import com.gilbertohdz.currency.lib.utils.prefs.ICurrencyPrefs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.symbols_component_search_toolbar.*
 import kotlinx.android.synthetic.main.symbols_fragment.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SymbolsFragment : Fragment() {
+  
+  @Inject lateinit var prefs: ICurrencyPrefs
   
   private val viewModel by viewModels<SymbolsViewModel>()
   
@@ -60,11 +66,19 @@ class SymbolsFragment : Fragment() {
     }
   }
   
-  private fun bindErrorView(errorUi: SymbolErrorUi?) {
-    errorUi?.let { error ->
-      symbolsMessageCoverViewContainer.title(error.code.toString())
-      symbolsMessageCoverViewContainer.description(error.description)
-      symbolsMessageCoverViewContainer.visibility = View.VISIBLE
+  private fun bindErrorView(errorUi: Event<SymbolErrorUi>) {
+    errorUi.getContentIfNotHandled()?.let { error ->
+      
+      if (error.code == 101 && prefs.isSessionExpired()) {
+        requireContext().showDialogSession {
+          prefs.restartSession()
+          viewModel.getSymbols()
+        }
+      } else {
+        symbolsMessageCoverViewContainer.title(error.code.toString())
+        symbolsMessageCoverViewContainer.description(error.description)
+        symbolsMessageCoverViewContainer.visibility = View.VISIBLE
+      }
     }
   }
   
