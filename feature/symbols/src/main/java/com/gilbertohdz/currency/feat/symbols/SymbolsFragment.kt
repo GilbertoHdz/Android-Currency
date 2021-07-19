@@ -81,6 +81,7 @@ class SymbolsFragment : Fragment() {
   }
   
   override fun onDestroyView() {
+    mActionMode?.finish()
     super.onDestroyView()
   }
   
@@ -138,10 +139,20 @@ class SymbolsFragment : Fragment() {
       searchView?.let { search ->
         search.onActionViewExpanded()
         search.queryHint = getString(R.string.symbols_search_currency)
-        search.onQueryTextChange {
-          Log.i("GIL", "searchView: $it")
+        search.onQueryTextChange { query ->
+          val queryLower = query.toLowerCase()
+          val filtered = if (query.isEmpty()) {
+            viewModel.symbols().value
+          } else {
+            viewModel.symbols().value?.filter {
+              it.description.toLowerCase().contains(queryLower) ||
+                  it.symbol.toLowerCase().contains(queryLower)
+            }
+          }
+          symbolsAdapter.submitList(filtered)
         }
         search.setOnCloseListener {
+          symbolsAdapter.submitList(viewModel.symbols().value)
           true
         }
       }
@@ -159,7 +170,7 @@ class SymbolsFragment : Fragment() {
       mActionMode = null
       lifecycleScope.launch {
         delay(ANIM_TOOLBAR_DISPLAYED_MAX)
-        symbolsHomeAppBar.setExpanded(true)
+        symbolsHomeAppBar?.setExpanded(true)
       }
     }
   }
