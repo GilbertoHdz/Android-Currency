@@ -1,5 +1,7 @@
 package com.gilbertohdz.currency.feat.rates
 
+import com.gilbertohdz.currency.lib.utils.common.ErrorTypeCommon
+
 data class RatesUi(
   val currency: String,
   val value: Double,
@@ -9,3 +11,12 @@ data class RatesUi(
     return this.value * this.toConvert
   }
 }
+
+data class RateErrorUi(
+  val code: Int,
+  val description: String
+)
+
+data class RateFailureUi(
+  val typeError: ErrorTypeCommon
+)

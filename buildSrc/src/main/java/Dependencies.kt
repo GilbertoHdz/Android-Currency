@@ -57,4 +57,5 @@ object TestDep {
     const val MOCKK = "io.mockk:mockk:${TestVersion.MOCKK_VERSION}"
     const val HAMCREST = "org.hamcrest:hamcrest:${TestVersion.HAMCREST_VERSION}"
     const val HAMCREST_LIBRARY = "org.hamcrest:hamcrest-library:${TestVersion.HAMCREST_VERSION}"
+    const val CORE_TESTING = "androidx.arch.core:core-testing:${TestVersion.CORE_TESTING_VERSION}"
 }

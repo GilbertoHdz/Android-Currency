@@ -32,6 +32,18 @@ fun DependencyHandler.addCoreLibraryModuleDependencies() {
     kapt(Deps.DAGGER_HILT_COMPILER)
 }
 
+
+/**
+ * Adds Test dependencies to libraries module
+ */
+fun DependencyHandler.addTestLibraryModuleDependencies() {
+    testImplementation(TestDep.JUNIT)
+    testImplementation(TestDep.MOCKITO)
+    testImplementation(TestDep.MOCKK)
+    testImplementation(TestDep.HAMCREST)
+    testImplementation(TestDep.HAMCREST_LIBRARY)
+}
+
 /*
  * These extensions mimic the extensions that are generated on the fly by Gradle.
  * They are used here to provide above dependency syntax that mimics Gradle Kotlin DSL
@@ -44,3 +56,7 @@ private fun DependencyHandler.implementation(dependencyNotation: Any): Dependenc
 @Suppress("detekt.UnusedPrivateMember")
 private fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
     add("kapt", dependencyNotation)
+
+@Suppress("detekt.UnusedPrivateMember")
+private fun DependencyHandler.testImplementation(dependencyNotation: Any): Dependency? =
+    add("testImplementation", dependencyNotation)

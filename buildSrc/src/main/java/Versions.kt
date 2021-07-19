@@ -72,4 +72,7 @@ object TestVersion {
     
     // Hamcrest
     const val HAMCREST_VERSION = "2.2"
+    
+    // Arch core testing
+    const val CORE_TESTING_VERSION = "2.1.0"
 }

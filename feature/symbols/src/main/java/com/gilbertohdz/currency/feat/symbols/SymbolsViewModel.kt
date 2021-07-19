@@ -1,6 +1,5 @@
 package com.gilbertohdz.currency.feat.symbols
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,11 +20,13 @@ class SymbolsViewModel @Inject constructor(
 ) : ViewModel() {
   
   private val _symbolsLoading = MutableLiveData<Boolean>()
-  private val _symbolsFailure = MutableLiveData<Boolean>()
+  private val _symbolsFailure = MutableLiveData<SymbolFailureUi>()
+  private val _symbolsError = MutableLiveData<SymbolErrorUi>()
   private val _symbols = MutableLiveData<List<CurrencySymbolUi>>()
   
   fun isSymbolsLoading(): LiveData<Boolean> = _symbolsLoading
-  fun isSymbolsFailure(): LiveData<Boolean> = _symbolsFailure
+  fun isSymbolsFailure(): LiveData<SymbolFailureUi> = _symbolsFailure
+  fun isSymbolsError(): LiveData<SymbolErrorUi> = _symbolsError
   fun symbols(): LiveData<List<CurrencySymbolUi>> = _symbols
   
   fun getSymbols() {
@@ -40,7 +41,14 @@ class SymbolsViewModel @Inject constructor(
   
   private fun symbolsSubscribe(result: GetSymbolsResult) {
     _symbolsLoading.value = result is GetSymbolsResult.InProgress
-    _symbolsFailure.value = result is GetSymbolsResult.Failed
+    
+    if (result is GetSymbolsResult.Failed) {
+      _symbolsFailure.value = SymbolFailureUi(result.errorTypeCommon)
+    }
+    
+    if (result is GetSymbolsResult.Error) {
+      _symbolsError.value = SymbolErrorUi(result.code, result.info)
+    }
     
     if (result is GetSymbolsResult.Success) {
       val mapSymbols = result.symbols.map {

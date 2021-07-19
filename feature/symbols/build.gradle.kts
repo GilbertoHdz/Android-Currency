@@ -1,4 +1,5 @@
 import extensions.addCoreLibraryModuleDependencies
+import extensions.addTestLibraryModuleDependencies
 
 plugins {
     id(Plugins.ANDROID_LIBRARY_PLUGIN)
@@ -37,4 +38,6 @@ dependencies {
     implementation(project(":libraries:component"))
     
     addCoreLibraryModuleDependencies()
+    addTestLibraryModuleDependencies()
+    testImplementation(TestDep.CORE_TESTING)
 }

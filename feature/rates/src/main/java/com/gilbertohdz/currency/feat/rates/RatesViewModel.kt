@@ -20,11 +20,13 @@ class RatesViewModel @Inject constructor(
 ) : ViewModel() {
   
   private val _ratesLoading = MutableLiveData<Boolean>()
-  private val _ratesFailure = MutableLiveData<Boolean>()
+  private val _ratesFailure = MutableLiveData<RateFailureUi>()
+  private val _ratesError = MutableLiveData<RateErrorUi>()
   private val _rates = MutableLiveData<List<RatesUi>>()
   
   fun isRatesLoading(): LiveData<Boolean> = _ratesLoading
-  fun isRatesFailure(): LiveData<Boolean> = _ratesFailure
+  fun isRatesFailure(): LiveData<RateFailureUi> = _ratesFailure
+  fun isRatesError(): LiveData<RateErrorUi> = _ratesError
   fun rates(): LiveData<List<RatesUi>> = _rates
   
   fun getRates(currency: String) {
@@ -39,7 +41,14 @@ class RatesViewModel @Inject constructor(
   
   private fun ratesSubscribe(result: GetRatesResult) {
     _ratesLoading.value = result is GetRatesResult.InProgress
-    _ratesFailure.value = result is GetRatesResult.Failed
+    
+    if (result is GetRatesResult.Error) {
+      _ratesError.value = RateErrorUi(result.code, result.info)
+    }
+    
+    if (result is GetRatesResult.Failed) {
+      _ratesFailure.value = RateFailureUi(result.errorTypeCommon)
+    }
     
     if (result is GetRatesResult.Success) {
       val mapRates = result.rates.map {
