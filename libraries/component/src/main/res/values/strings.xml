@@ -2,4 +2,9 @@
 <resources>
     <string name="rates_conversion">Conversion</string>
     <string name="symbols_search_currency">Search currency</string>
+    <string name="component_retry">Retry</string>
+    <string name="component_error_connection_title">No internet connection</string>
+    <string name="component_error_connection_description">Please check your internet connection and try again.</string>
+    <string name="component_error_generic_title">Something went wrong</string>
+    <string name="component_error_generic_description">Oops! Something went wrong, please try again.</string>
 </resources>

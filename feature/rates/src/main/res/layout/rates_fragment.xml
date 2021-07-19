@@ -48,6 +48,37 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ratesValueInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/ratesToolbar"
+        app:layout_constraintVertical_bias="0.26999998" />
+
+    <ProgressBar
+        android:id="@+id/ratesLoader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratesToolbar"
+        app:layout_constraintVertical_bias="0.26999998" />
+
+    <com.gilbertohdz.currency.lib.component.views.CoverMessagesView
+        android:id="@+id/componentMessageCoverViewContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratesToolbar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/ratesMainGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="ratesValueInputLayout,ratesRecyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

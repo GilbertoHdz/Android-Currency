@@ -28,7 +28,7 @@ class GetSymbolsInteractor @Inject constructor(
                         Result.Success(result.symbols)
                     } else {
                         val error = result.error ?: throw IllegalStateException("Error with code and info shouldn't be null")
-                        Result.Error(error.code, error.info)
+                        Result.Error(error.code, error.info ?: error.type)
                     } as GetSymbolsInteractor.Result
                 }
                 .onErrorReturn { e -> Result.Failed(e, ErrorTypeCommon.fromThrowable((e))) }
