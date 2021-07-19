@@ -65,7 +65,7 @@ internal class GetLatestRatesInteractorTest {
   
     result.assertValueSequence(listOf(
       GetLatestRatesInteractor.Result.InProgress,
-      GetLatestRatesInteractor.Result.Error(response.error!!.code, response.error!!.info)
+      GetLatestRatesInteractor.Result.Error(response.error!!.code, response.error?.info ?: response.error?.type ?: "")
     ))
   }
   

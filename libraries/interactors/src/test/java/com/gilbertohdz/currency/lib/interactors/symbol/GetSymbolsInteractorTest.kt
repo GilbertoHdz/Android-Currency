@@ -63,7 +63,7 @@ internal class GetSymbolsInteractorTest {
     
     result.assertValueSequence(listOf(
       GetSymbolsInteractor.Result.InProgress,
-      GetSymbolsInteractor.Result.Error(response.error!!.code, response.error!!.info)
+      GetSymbolsInteractor.Result.Error(response.error!!.code, response.error?.info ?: response.error?.type ?: "")
     ))
   }
   
