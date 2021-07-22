@@ -60,7 +60,7 @@ class CurrencyPrefs @Inject constructor(
   
   
   companion object {
-    private const val ACTIVE_SESSION_IN_MINUTE = 1
+    private const val ACTIVE_SESSION_IN_MINUTE = 60
     
     private const val CURRENCY_PREFS_FILE_NAME = "currency_application_prefs"
     
