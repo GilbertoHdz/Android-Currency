@@ -39,6 +39,8 @@ class RatesViewModel @Inject constructor(
             _rates.value = result.map {
               RatesUi(it.currency, it.value, DEFAULT_CONVERT_VALUE)
             }
+          } else {
+            getRates(currency)
           }
         }
     }

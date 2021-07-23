@@ -40,6 +40,9 @@ class SymbolsViewModel @Inject constructor(
       symbolDao.getSymbols()
         .collect { result ->
           _symbols.value = result.map { CurrencySymbolUi(symbol = it.currency, description = it.description) }
+          
+          // Force fetch from API
+          if (result.isEmpty()) { getSymbols() }
         }
     }
   }

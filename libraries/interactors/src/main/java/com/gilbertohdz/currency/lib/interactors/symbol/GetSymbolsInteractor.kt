@@ -33,7 +33,10 @@ class GetSymbolsInteractor @Inject constructor(
                 .map { result ->
                     if (result.success) {
                         val store = result.symbols.map { SymbolEntity(it.key, it.value) }
-                        GlobalScope.launch { symbolDao.addAllSymbols(store) }
+                        GlobalScope.launch {
+                            symbolDao.deleteAll()
+                            symbolDao.addAllSymbols(store)
+                        }
                         Result.Success(result.symbols)
                     } else {
                         val error = result.error ?: throw IllegalStateException("Error with code and info shouldn't be null")

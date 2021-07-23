@@ -15,4 +15,7 @@ interface RateDao {
   
   @Query("SELECT * FROM rates WHERE baseId = :base")
   fun getRatesByBase(base: String): Flow<List<RateEntity>>
+  
+  @Query("DELETE FROM rates")
+  fun deleteAll()
 }

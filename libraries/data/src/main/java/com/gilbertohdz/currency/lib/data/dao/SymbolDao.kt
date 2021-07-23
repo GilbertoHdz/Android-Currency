@@ -1,9 +1,6 @@
 package com.gilbertohdz.currency.lib.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.gilbertohdz.currency.lib.entities.SymbolEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -18,4 +15,7 @@ interface SymbolDao {
   
   @Query("SELECT * FROM symbols")
   fun getSymbols(): Flow<List<SymbolEntity>>
+  
+  @Query("DELETE FROM symbols")
+  fun deleteAll()
 }

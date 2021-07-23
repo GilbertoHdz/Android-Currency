@@ -31,7 +31,10 @@ class GetLatestRatesInteractor @Inject constructor(
                 .map { result ->
                     if (result.success) {
                         val store = result.rates.map { RateEntity(baseId =  params.base, currency = it.key, value = it.value) }
-                        GlobalScope.launch { ratesDao.addAllRates(store) }
+                        GlobalScope.launch {
+                            ratesDao.deleteAll()
+                            ratesDao.addAllRates(store)
+                        }
                         Result.Success(result.rates)
                     } else {
                         val error = result.error ?: throw IllegalStateException("Error with code and info shouldn't be null")

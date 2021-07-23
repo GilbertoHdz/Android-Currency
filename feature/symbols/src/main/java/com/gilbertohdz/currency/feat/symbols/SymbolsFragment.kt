@@ -48,7 +48,6 @@ class SymbolsFragment : Fragment() {
   
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel.getSymbols()
     viewModel.getStoredSymbols()
     viewModel.symbols().observe(viewLifecycleOwner, Observer { result -> bindSymbols(result) })
     viewModel.isSymbolsFailure().observe(viewLifecycleOwner, Observer { bindFailureView(it) })
@@ -63,6 +62,7 @@ class SymbolsFragment : Fragment() {
       symbolsAdapter.submitList(it)
       symbolsRecyclerview.visibility = View.VISIBLE
       symbolsMessageCoverViewContainer.visibility = View.GONE
+      symbolsLoader.visibility = View.GONE
       setupActionBar()
     }
   }
