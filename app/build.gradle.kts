@@ -46,6 +46,8 @@ dependencies {
     implementation(project(":libraries:component"))
     implementation(project(":libraries:models"))
     implementation(project(":libraries:utils"))
+    implementation(project(":libraries:data"))
+    implementation(project(":libraries:persistence"))
     
     implementation(project(":feature:symbols"))
     implementation(project(":feature:rates"))

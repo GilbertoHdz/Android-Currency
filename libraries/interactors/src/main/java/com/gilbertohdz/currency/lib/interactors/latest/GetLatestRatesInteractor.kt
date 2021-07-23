@@ -1,5 +1,6 @@
 package com.gilbertohdz.currency.lib.interactors.latest
 
+import androidx.room.Dao
 import com.gilbertohdz.currency.lib.api.CurrencyService
 import com.gilbertohdz.currency.lib.interactors.BaseInteractor
 import com.gilbertohdz.currency.lib.interactors.latest.GetLatestRatesInteractor.Params
@@ -14,6 +15,7 @@ import javax.inject.Inject
 
 class GetLatestRatesInteractor @Inject constructor(
     private val currencyService: CurrencyService,
+    private val ratesDao: RateDao,
     private val prefs: ICurrencyPrefs
 ): BaseInteractor<Params, Result>() {
 

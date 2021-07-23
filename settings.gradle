@@ -1,10 +1,11 @@
+include ':libraries:data'
 include ':libraries:persistence'
-include ':feature:rates'
-include ':feature:symbols'
 include ':libraries:utils'
 include ':libraries:models'
 include ':libraries:interactors'
 include ':libraries:api'
 include ':libraries:component'
+include ':feature:rates'
+include ':feature:symbols'
 include ':app'
 rootProject.name = "Currency"

@@ -40,7 +40,8 @@ android {
 dependencies {
     
     implementation(Deps.KOTLIN)
-    implementation(Deps.RX_KOTLIN)
+    implementation(Deps.ANDROIDX_CORE_KTX)
+    implementation(Deps.COROUTINES_CORE)
     
     // Dagger Hilt
     implementation(Deps.DAGGER_HILT_ANDROID)
