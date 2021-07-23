@@ -18,6 +18,7 @@ android {
         targetSdkVersion(AndroidVersion.TARGET_SDK_VERSION)
         versionCode = AndroidVersion.VERSION_CODE
         versionName = AndroidVersion.VERSION_NAME
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     
     compileOptions {

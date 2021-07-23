@@ -58,6 +58,9 @@ object Version {
     
     // RxAndroid
     const val RX_ANDROID_VERSION = "2.1.1"
+    
+    // Room
+    const val ROOM_VERSION = "2.3.0"
 }
 
 object TestVersion {

@@ -49,6 +49,11 @@ object Deps {
     
     // RxAndroid
     const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${Version.RX_ANDROID_VERSION}"
+    
+    // RoomDB
+    const val ROOM_DB = "androidx.room:room-runtime:${Version.ROOM_VERSION}"
+    const val ROOM_DB_COMPILER = "androidx.room:room-compiler:${Version.ROOM_VERSION}"
+    const val ROOM_DB_KTX = "androidx.room:room-ktx:${Version.ROOM_VERSION}"
 }
 
 object TestDep {

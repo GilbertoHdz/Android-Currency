@@ -63,6 +63,11 @@ dependencies {
     // OkHttp
     implementation(Deps.OKHTTP)
     implementation(Deps.OKHTTP_LOGGING_INTERCEPTOR)
+    
+    // ROOM DB
+    implementation(Deps.ROOM_DB)
+    implementation(Deps.ROOM_DB_KTX)
+    kapt(Deps.ROOM_DB_COMPILER)
 
     // TODO(TEST)
     testImplementation("junit:junit:4.+")
