@@ -43,6 +43,6 @@ class SyncWorker @AssistedInject constructor(
   
   companion object {
     const val SYNC_WORKER_TAG = "sync_worker"
-    const val SYNC_WORKER_INTERVAL_MINUTES = 15L
+    const val SYNC_WORKER_INTERVAL_MINUTES = 60L
   }
 }
