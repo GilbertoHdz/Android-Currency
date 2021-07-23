@@ -30,7 +30,11 @@ android {
 dependencies {
     
     implementation(project(":libraries:data"))
+    implementation(project(":libraries:utils"))
+    implementation(project(":libraries:interactors"))
     
+    implementation(Deps.RX_KOTLIN)
+    implementation(Deps.RX_ANDROID)
     implementation(Deps.KOTLIN)
     implementation(Deps.FRAGMENT_KTX)
     implementation(Deps.ANDROIDX_CORE_KTX)
@@ -44,6 +48,9 @@ dependencies {
     implementation(Deps.ROOM_DB_KTX)
     kapt(Deps.ROOM_DB_COMPILER)
     
-    implementation("androidx.hilt:hilt-work:1.0.0")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    // Work manager
+    implementation(Deps.WORK_HILT)
+    kapt(Deps.WORK_HILT_COMPILER)
+    implementation (Deps.WORK_KOTLIN)
+    implementation(Deps.WORK_MULTIPROCESS)
 }

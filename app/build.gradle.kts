@@ -70,7 +70,13 @@ dependencies {
     implementation(Deps.ROOM_DB)
     implementation(Deps.ROOM_DB_KTX)
     kapt(Deps.ROOM_DB_COMPILER)
-
+    
+    // Work manager
+    implementation(Deps.WORK_HILT)
+    kapt(Deps.WORK_HILT_COMPILER)
+    implementation (Deps.WORK_KOTLIN)
+    implementation(Deps.WORK_MULTIPROCESS)
+    
     // TODO(TEST)
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

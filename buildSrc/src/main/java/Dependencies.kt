@@ -57,6 +57,14 @@ object Deps {
     const val ROOM_DB = "androidx.room:room-runtime:${Version.ROOM_VERSION}"
     const val ROOM_DB_COMPILER = "androidx.room:room-compiler:${Version.ROOM_VERSION}"
     const val ROOM_DB_KTX = "androidx.room:room-ktx:${Version.ROOM_VERSION}"
+    
+    // Work
+    const val WORK_KOTLIN = "androidx.work:work-runtime-ktx:${Version.WORK_VERSION}"
+    const val WORK_MULTIPROCESS = "androidx.work:work-multiprocess:${Version.WORK_VERSION}"
+    
+    // Work Hilt
+    const val WORK_HILT = "androidx.hilt:hilt-work:${Version.WORK_HILT_VERSION}"
+    const val WORK_HILT_COMPILER = "androidx.hilt:hilt-compiler:${Version.WORK_HILT_VERSION}"
 }
 
 object TestDep {

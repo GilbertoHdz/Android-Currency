@@ -61,6 +61,12 @@ object Version {
     
     // Room
     const val ROOM_VERSION = "2.3.0"
+    
+    // Work
+    const val WORK_VERSION = "2.5.0"
+    
+    // Work Hilt
+    const val WORK_HILT_VERSION = "1.0.0"
 }
 
 object TestVersion {
