@@ -1,5 +1,6 @@
 package com.gilbertohdz.currency.lib.entities
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
@@ -10,4 +11,4 @@ data class RateEntity(
   @PrimaryKey
   val currency: String,
   val value: Double
-)
+): Parcelable

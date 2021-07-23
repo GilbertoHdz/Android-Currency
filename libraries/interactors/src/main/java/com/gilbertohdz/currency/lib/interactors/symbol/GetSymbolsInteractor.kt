@@ -1,6 +1,10 @@
 package com.gilbertohdz.currency.lib.interactors.symbol
 
 import com.gilbertohdz.currency.lib.api.CurrencyService
+import com.gilbertohdz.currency.lib.data.dao.RateDao
+import com.gilbertohdz.currency.lib.data.dao.SymbolDao
+import com.gilbertohdz.currency.lib.entities.RateEntity
+import com.gilbertohdz.currency.lib.entities.SymbolEntity
 import com.gilbertohdz.currency.lib.interactors.BaseInteractor
 import com.gilbertohdz.currency.lib.interactors.symbol.GetSymbolsInteractor.Params
 import com.gilbertohdz.currency.lib.interactors.symbol.GetSymbolsInteractor.Result
@@ -9,11 +13,14 @@ import com.gilbertohdz.currency.lib.utils.common.ErrorTypeCommon
 import com.gilbertohdz.currency.lib.utils.prefs.ICurrencyPrefs
 import io.reactivex.ObservableTransformer
 import io.reactivex.Single
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.IllegalStateException
 import javax.inject.Inject
 
 class GetSymbolsInteractor @Inject constructor(
     private val currencyService: CurrencyService,
+    private val symbolDao: SymbolDao,
     private val prefs: ICurrencyPrefs
 ): BaseInteractor<Params, Result>() {
 
@@ -25,6 +32,8 @@ class GetSymbolsInteractor @Inject constructor(
                 .toObservable()
                 .map { result ->
                     if (result.success) {
+                        val store = result.symbols.map { SymbolEntity(it.key, it.value) }
+                        GlobalScope.launch { symbolDao.addAllSymbols(store) }
                         Result.Success(result.symbols)
                     } else {
                         val error = result.error ?: throw IllegalStateException("Error with code and info shouldn't be null")

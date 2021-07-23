@@ -32,8 +32,8 @@ dependencies {
     implementation(project(":libraries:data"))
     
     implementation(Deps.KOTLIN)
-    implementation(Deps.RETROFIT)
-    implementation(Deps.RX_KOTLIN)
+    implementation(Deps.FRAGMENT_KTX)
+    implementation(Deps.ANDROIDX_CORE_KTX)
     
     // Dagger Hilt
     implementation(Deps.DAGGER_HILT_ANDROID)

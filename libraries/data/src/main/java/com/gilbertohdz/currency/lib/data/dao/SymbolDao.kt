@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.gilbertohdz.currency.lib.data.entities.SymbolEntity
+import com.gilbertohdz.currency.lib.entities.SymbolEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

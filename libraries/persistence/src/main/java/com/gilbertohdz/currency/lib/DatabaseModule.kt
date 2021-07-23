@@ -1,4 +1,4 @@
-package com.gilbertohdz.currency.lib.persistence
+package com.gilbertohdz.currency.lib
 
 import android.app.Application
 import com.gilbertohdz.currency.lib.data.dao.RateDao
@@ -10,11 +10,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-private const val DATABASE_VERSION = 1
-
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DatabaseModule {
+class DatabaseModule {
   
   @Singleton
   @Provides
