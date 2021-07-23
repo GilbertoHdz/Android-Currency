@@ -36,6 +36,7 @@ dependencies {
     implementation(project(":libraries:interactors"))
     implementation(project(":libraries:utils"))
     implementation(project(":libraries:component"))
+    implementation(project(":libraries:data"))
     
     addCoreLibraryModuleDependencies()
     addTestLibraryModuleDependencies()

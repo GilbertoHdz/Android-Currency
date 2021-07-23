@@ -43,4 +43,7 @@ dependencies {
     implementation(Deps.ROOM_DB)
     implementation(Deps.ROOM_DB_KTX)
     kapt(Deps.ROOM_DB_COMPILER)
+    
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
 }

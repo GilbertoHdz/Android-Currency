@@ -48,6 +48,7 @@ class RatesFragment : Fragment() {
     ratesToolbar.setNavigationOnClickListener { findNavController().popBackStack() }
   
     viewModel.getRates(arg.symbol)
+    viewModel.getStoredRates(arg.symbol)
     viewModel.rates().observe(viewLifecycleOwner, Observer { result -> bindRates(result) })
     viewModel.isRatesFailure().observe(viewLifecycleOwner, Observer { bindFailureView(it) })
     viewModel.isRatesError().observe(viewLifecycleOwner, Observer { bindErrorView(it) })

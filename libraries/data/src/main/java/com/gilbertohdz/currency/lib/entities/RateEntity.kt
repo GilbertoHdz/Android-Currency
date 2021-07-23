@@ -8,7 +8,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "rates")
 data class RateEntity(
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
+  val id: Int = 0,
+  val baseId: String,
   val currency: String,
   val value: Double
 ): Parcelable

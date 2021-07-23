@@ -1,9 +1,6 @@
 package com.gilbertohdz.currency.lib.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.gilbertohdz.currency.lib.entities.RateEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -16,6 +13,6 @@ interface RateDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun addAllRates(rateEntity: List<RateEntity>)
   
-  @Query("SELECT * FROM rates")
-  fun getRates(): Flow<List<RateEntity>>
+  @Query("SELECT * FROM rates WHERE baseId = :base")
+  fun getRatesByBase(base: String): Flow<List<RateEntity>>
 }

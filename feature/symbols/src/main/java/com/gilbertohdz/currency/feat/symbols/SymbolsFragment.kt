@@ -49,6 +49,7 @@ class SymbolsFragment : Fragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     viewModel.getSymbols()
+    viewModel.getStoredSymbols()
     viewModel.symbols().observe(viewLifecycleOwner, Observer { result -> bindSymbols(result) })
     viewModel.isSymbolsFailure().observe(viewLifecycleOwner, Observer { bindFailureView(it) })
     viewModel.isSymbolsError().observe(viewLifecycleOwner, Observer { bindErrorView(it) })

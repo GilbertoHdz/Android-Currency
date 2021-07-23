@@ -1,8 +1,7 @@
 package com.gilbertohdz.currency.feat.rates
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.gilbertohdz.currency.lib.data.dao.RateDao
 import com.gilbertohdz.currency.lib.interactors.latest.GetLatestRatesInteractor
 import com.gilbertohdz.currency.lib.interactors.latest.GetLatestRatesInteractor.Result as GetRatesResult
 import com.gilbertohdz.currency.lib.utils.providers.SchedulerProvider
@@ -10,11 +9,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class RatesViewModel @Inject constructor(
   private val getLatestRatesInteractor: GetLatestRatesInteractor,
+  private val ratesDao: RateDao,
   private val scheduler: SchedulerProvider,
   private val disposable: CompositeDisposable
 ) : ViewModel() {
@@ -28,6 +30,19 @@ class RatesViewModel @Inject constructor(
   fun isRatesFailure(): LiveData<RateFailureUi> = _ratesFailure
   fun isRatesError(): LiveData<RateErrorUi> = _ratesError
   fun rates(): LiveData<List<RatesUi>> = _rates
+  
+  fun getStoredRates(currency: String) {
+    viewModelScope.launch {
+      ratesDao.getRatesByBase(currency)
+        .collect { result ->
+          if (result.isNotEmpty()) {
+            _rates.value = result.map {
+              RatesUi(it.currency, it.value, DEFAULT_CONVERT_VALUE)
+            }
+          }
+        }
+    }
+  }
   
   fun getRates(currency: String) {
     Observable.just(GetLatestRatesInteractor.Params(currency))

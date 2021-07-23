@@ -30,7 +30,7 @@ class GetLatestRatesInteractor @Inject constructor(
                 .toObservable()
                 .map { result ->
                     if (result.success) {
-                        val store = result.rates.map { RateEntity(it.key, it.value) }
+                        val store = result.rates.map { RateEntity(baseId =  params.base, currency = it.key, value = it.value) }
                         GlobalScope.launch { ratesDao.addAllRates(store) }
                         Result.Success(result.rates)
                     } else {
